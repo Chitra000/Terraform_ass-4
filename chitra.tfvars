@@ -4,8 +4,8 @@ tags = {
   Purpose = "practice"
 }
 bucket_info = {
-  "bucket-1" = { "name" = "chitra-bucket-1" }
-  "bucket-2" = { "name" = "chitra-bucket-2" }
+  "bucket-1" = { "name" = "chitra-b-1" }
+  "bucket-2" = { "name" = "chitra-b-2" }
 }
 # bucket_info = {
 #   "bucket-1" = {"name" = "chitra-bucket-1", "acl" = "private"}
