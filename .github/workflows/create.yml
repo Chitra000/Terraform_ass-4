@@ -1,0 +1,39 @@
+name: Terraform Apply
+
+on:
+  workflow_dispatch:
+    inputs:
+      AWS_REGION:
+        description: 'Specify the region where you want the resources to be created: '
+        required: true
+      
+
+# env:
+#   AWS_REGION: ap-south-1
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
+      
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ inputs.AWS_REGION }}
+
+    - name: Set up Terraform
+      uses: hashicorp/setup-terraform@v1
+
+    - name: Terraform Init
+      run: terraform init
+
+    - name: Terraform Plan
+      run: terraform plan -var-file=chitra.tfvars -out=tfplan
+
+    - name: Terraform Apply
+      run: terraform apply -auto-approve "tfplan"
