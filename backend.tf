@@ -1,8 +1,8 @@
 terraform {
   backend "s3" {
-    bucket         = "chitra-s3-bucket"
+    bucket         = "chitra-bucket-12"
     key            = "terraform.tfstate"
     region         = "ap-south-1"
-    dynamodb_table = "karan01"
+    # dynamodb_table = "karan01"
   }
 }
